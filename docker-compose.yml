@@ -17,6 +17,7 @@ services:
       - ./locust:/mnt/locust
     command: -f /mnt/locust/locustfiles --worker --master-host master_node --csv=/mnt/locust/results/test_result
     # command parameters
+    # -f: locust file location
     # --headless: no web ui
     # -u: no of users
     # -r: user spawn per second
