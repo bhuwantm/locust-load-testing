@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  master_node:
+    image: locustio/locust
+    container_name: master_node
+    ports:
+     - "8089:8089"
+    volumes:
+      - ./locust:/mnt/locust
+    command: -f /mnt/locust/locustfiles --master -H http://master:8089
+  
+  worker_node:
+    image: locustio/locust
+    container_name: worker_node
+    volumes:
+      - ./locust:/mnt/locust
+    command: -f /mnt/locust/locustfiles --worker --master-host master_node --csv=/mnt/locust/results/example
+
+    #--headless: no web ui
+    # -u: no of users
+    # -r: user spawn per second
+    #--master-host: ip of master host machine
