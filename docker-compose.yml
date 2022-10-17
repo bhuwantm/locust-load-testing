@@ -15,9 +15,9 @@ services:
     container_name: worker_node
     volumes:
       - ./locust:/mnt/locust
-    command: -f /mnt/locust/locustfiles --worker --master-host master_node --csv=/mnt/locust/results/example
-
-    #--headless: no web ui
+    command: -f /mnt/locust/locustfiles --worker --master-host master_node --csv=/mnt/locust/results/test_result
+    # command parameters
+    # --headless: no web ui
     # -u: no of users
     # -r: user spawn per second
-    #--master-host: ip of master host machine
+    # --master-host: ip of master host machine (in our case its docker container name)
